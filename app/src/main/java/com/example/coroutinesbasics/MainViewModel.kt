@@ -60,7 +60,7 @@ class MainViewModel(
 
     private fun loadNexPopularMovie(currentPage: Int) {
         viewModelScope.launch {
-            tmbdRepository.getPopularMoviesFirstSave(currentPage + 1)
+            tmbdRepository.getPopularMoviesFirstSave(currentPage)
         }
     }
 
