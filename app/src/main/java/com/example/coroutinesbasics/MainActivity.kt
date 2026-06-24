@@ -36,7 +36,6 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -47,6 +46,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.compose.rememberConstraintsSizeResolver
@@ -78,7 +78,7 @@ class MainActivity : ComponentActivity() {
 fun BasicsAppLayout(
     windowSize: WindowSizeClass? = null, viewModel: MainViewModel = koinViewModel()
 ) {
-    val movieUIState by viewModel.moviesUIState.collectAsState()
+    val movieUIState by viewModel.moviesUIState.collectAsStateWithLifecycle()
 
     BasicsAppLayoutContent(
         windowSize = windowSize, movieUIState = movieUIState,
