@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,8 +23,6 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CircularProgressIndicator
@@ -143,10 +142,7 @@ fun Greeting(
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+            verticalArrangement = Arrangement.Center
         ) {
             when (movieUIState) {
                 is MovieUIState.Loading -> CircularProgressIndicator()
@@ -174,7 +170,7 @@ fun MovieLazyRow(
 
     // 1. CACHE THE LIST: Prevents recreating a brand-new list on every single scroll frame
     val flatMovieList = remember(movies) {
-        movies.flatMap { it.movies }.sortedByDescending { it.rating }
+        movies.flatMap { it.movies }
     }
 
     val lastElement = movies.lastOrNull()
@@ -182,7 +178,8 @@ fun MovieLazyRow(
     // 2. STABLE PAGINATION TRIGGER: Keyed to flatMovieList.size to prevent extra recompositions
     val shouldLoadMore by remember(flatMovieList.size) {
         derivedStateOf {
-            val lastVisibleItem = listState.layoutInfo.visibleItemsInfo.lastOrNull() ?: return@derivedStateOf false
+            val lastVisibleItem =
+                listState.layoutInfo.visibleItemsInfo.lastOrNull() ?: return@derivedStateOf false
             val totalItemsCount = listState.layoutInfo.totalItemsCount
 
             lastVisibleItem.index >= totalItemsCount - 3
@@ -198,7 +195,9 @@ fun MovieLazyRow(
 
     LazyRow(
         state = listState,
-        modifier = modifier.height(240.dp),
+        modifier = modifier
+            .height(240.dp)
+            .fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
