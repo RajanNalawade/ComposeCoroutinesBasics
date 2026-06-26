@@ -119,6 +119,7 @@ jobs:
       - name: setup JDK 17
         uses: actions/setup-java@v4
         with:
+          distribution: 'temurin'  # ✅ required field
           java-version: 17
 
       - name: SonarCloud Scan
