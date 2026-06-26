@@ -24,6 +24,10 @@ jobs:
       - name: Check-out the code
         uses: actions/checkout@v4
 
+      # make gradlew executables first
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       # Runs a single command using the runners shell
       - name: Run Lint
         run: ./gradlew lintDebug
@@ -47,6 +51,10 @@ jobs:
         # Check-out you repository under $GITHUB_WORKSPACE, so your job can access it
         - name: Check-out the code
           uses: actions/checkout@v4
+
+        # make gradlew executables first
+        - name: Make gradlew executable
+          run: chmod +x ./gradlew
 
         # Runs a single command using the runners shell
         - name: Run Unit test cases
