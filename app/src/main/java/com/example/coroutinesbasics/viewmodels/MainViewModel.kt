@@ -1,4 +1,4 @@
-package com.example.coroutinesbasics
+package com.example.coroutinesbasics.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -19,8 +19,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 sealed interface MainUIEvents {
-    object OnOkClicked : MainUIEvents
-    object OnResetClicked : MainUIEvents
+    data class OnItemClicked(val itemId: Int) : MainUIEvents
     data class LoadNextPage(val page: Int) : MainUIEvents
 }
 
@@ -67,8 +66,7 @@ class MainViewModel(
     fun handleUserEvents(event: MainUIEvents) {
         when (event) {
             is MainUIEvents.LoadNextPage -> loadNexPopularMovie(event.page)
-            MainUIEvents.OnOkClicked -> {}
-            MainUIEvents.OnResetClicked -> {}
+            is MainUIEvents.OnItemClicked -> {}
         }
     }
 }

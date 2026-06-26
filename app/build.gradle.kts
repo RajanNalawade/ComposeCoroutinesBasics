@@ -100,6 +100,7 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.viewmodel)
     implementation(libs.androidx.navigation3.adaptive)
+    implementation(libs.koin.androidx.compose.navigation3)
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
