@@ -41,7 +41,9 @@ jobs:
 
 # job For Unit test cases
   unit-test:
-      # The type of runner that the job will run on
+    # Added dependency of lint, once lint gets completed then only unit-test task will get run
+      needs: [ lint ]
+    # The type of runner that the job will run on
       runs-on: ubuntu-latest
 
       # Steps represent a sequence of tasks they will be executed as part of the job
