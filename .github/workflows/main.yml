@@ -36,7 +36,7 @@ jobs:
       - name: Upload html test report
         uses: actions/upload-artifact@v4
         with:
-          name: lint-report.html
+          name: lint_report.html
           path: app/build/reports/lint-results-debug.html
 
 # job For Unit test cases
@@ -64,6 +64,36 @@ jobs:
         - name: Upload html test report
           uses: actions/upload-artifact@v4
           with:
-            name: test-report.html
+            name: test_report.html
             path: app/build/reports/tests/testDebugUnitTest/
+
+ #instrumentation test cases
+  instrumentation-test:
+    # Added dependency of lint, once lint gets completed then only unit-test task will get run
+    needs: [ unit-test ]
+    # The type of runner that the job will run on
+    runs-on: winos-latest
+
+    # Steps represent a sequence of tasks they will be executed as part of the job
+    steps:
+      # Check-out you repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check-out the code
+        uses: actions/checkout@v4
+
+      # make gradlew executables first
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Run expresso tests
+        uses: reactivecircus/android-emulator-runner@v4
+        with:
+          api-level: 36
+          script: ./gradlew connectedCheck
+
+      # Runs a set of commands using the runners shell
+      - name: Upload html test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: instrumentation_test_report.html
+          path: app/build/reports/androidTests/connected/debug/
   
