@@ -24,6 +24,7 @@ jobs:
       - name: Check-out the code
         uses: actions/checkout@v4
 
+      # make gradlew executables first
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
