@@ -116,13 +116,13 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: setup JDK 17
+      - name: setup JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'  # ✅ required field
-          java-version: 17
+          java-version: 21
 
       - name: SonarCloud Scan
-        run: ./gradlew app:sonarqube -Dsonar.login=${{secrets.SONAR_TOKEN}}
+        run: ./gradlew ComposeCoroutinesBasics:sonarqube -Dsonar.login=${{secrets.SONAR_TOKEN}}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
