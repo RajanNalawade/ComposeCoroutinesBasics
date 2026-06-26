@@ -19,7 +19,7 @@ class TMBDMovieWorker(
             tmbdRepository.getPopularMoviesFirstSave()
             Result.success()
         }catch (error: Throwable){
-            Result.Failure()
+            Result.failure()
         }
     }
 }
