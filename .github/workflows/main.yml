@@ -24,6 +24,9 @@ jobs:
       - name: Check-out the code
         uses: actions/checkout@v4
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       # Runs a single command using the runners shell
       - name: Run Lint
         run: ./gradlew lintDebug
