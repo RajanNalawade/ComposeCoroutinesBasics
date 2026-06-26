@@ -17,7 +17,7 @@ class TMBDMovieWorker(
 
         return try {
             tmbdRepository.getPopularMoviesFirstSave()
-            Result.Success()
+            Result.success()
         }catch (error: Throwable){
             Result.Failure()
         }

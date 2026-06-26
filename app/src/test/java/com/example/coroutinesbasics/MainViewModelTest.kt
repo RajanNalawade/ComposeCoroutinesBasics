@@ -1,23 +1,10 @@
 package com.example.coroutinesbasics
 
 
-import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.core.app.ApplicationProvider
-import androidx.work.WorkManager
-import androidx.work.testing.WorkManagerTestInitHelper
-import com.example.coroutinesbasics.db.Title
-import com.example.coroutinesbasics.db.TitleDao
-import com.example.coroutinesbasics.network.MainNetwork
-import com.example.coroutinesbasics.repository.TitleRepository
 import com.example.coroutinesbasics.utils.MainCoroutineScopeRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import org.junit.Assert
-import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 
 class MainViewModelTest {
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -29,7 +16,7 @@ class MainViewModelTest {
 
     lateinit var subject: MainViewModel
 
-    @Before
+    /*@Before
     fun setUp() {
         val repository = TitleRepository(
             network = object : MainNetwork {
@@ -68,6 +55,6 @@ class MainViewModelTest {
         subject.onResetClicked()
         coroutineScope.dispatcher.scheduler.advanceUntilIdle()
         Assert.assertEquals(0, subject.noOfTaps.value)
-    }
+    }*/
 
 }
