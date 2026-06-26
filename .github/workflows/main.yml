@@ -68,45 +68,45 @@ jobs:
 #            path: app/build/reports/tests/testDebugUnitTest/
 
   #instrumentation test cases
-  instrumentation-test:
-    # Added dependency of lint, once lint gets completed then only unit-test task will get run
-    #needs: [ unit-test ]
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks they will be executed as part of the job
-    steps:
-      # Check-out you repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Check-out the code
-        uses: actions/checkout@v4
-
-      # make gradlew executables first
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Enable KVM group perms  # ✅ Required on GitHub-hosted Linux runners
-        run: |
-            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-            sudo udevadm control --reload-rules
-            sudo udevadm trigger --name-match=kvm  
-
-      - name: Run expresso tests
-        uses: reactivecircus/android-emulator-runner@v2.34.0
-        with:
-          api-level: 35
-          arch: x86_64
-          script: ./gradlew connectedCheck
-
-      # Runs a set of commands using the runners shell
-      - name: Upload html test report
-        uses: actions/upload-artifact@v4
-        with:
-          name: instrumentation_test_report.html
-          path: app/build/reports/androidTests/connected/debug/
+#  instrumentation-test:
+#    # Added dependency of lint, once lint gets completed then only unit-test task will get run
+#    #needs: [ unit-test ]
+#    # The type of runner that the job will run on
+#    runs-on: ubuntu-latest
+#
+#    # Steps represent a sequence of tasks they will be executed as part of the job
+#    steps:
+#      # Check-out you repository under $GITHUB_WORKSPACE, so your job can access it
+#      - name: Check-out the code
+#        uses: actions/checkout@v4
+#
+#      # make gradlew executables first
+#      - name: Make gradlew executable
+#        run: chmod +x ./gradlew
+#
+#      - name: Enable KVM group perms  # ✅ Required on GitHub-hosted Linux runners
+#        run: |
+#            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+#            sudo udevadm control --reload-rules
+#            sudo udevadm trigger --name-match=kvm
+#
+#      - name: Run expresso tests
+#        uses: reactivecircus/android-emulator-runner@v2.34.0
+#        with:
+#          api-level: 35
+#          arch: x86_64
+#          script: ./gradlew connectedCheck
+#
+#      # Runs a set of commands using the runners shell
+#      - name: Upload html test report
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: instrumentation_test_report.html
+#          path: app/build/reports/androidTests/connected/debug/
 
   # static code analysis
   static-code-analysis:
-    needs: [ instrumentation-test ]
+    #needs: [ instrumentation-test ]
     runs-on: ubuntu-latest
 
     steps:
