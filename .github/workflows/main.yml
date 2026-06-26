@@ -24,10 +24,6 @@ jobs:
       - name: Check-out the code
         uses: actions/checkout@v4
 
-      # make gradlew executables first
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
       # Runs a single command using the runners shell
       - name: Run Lint
         run: ./gradlew lintDebug
@@ -52,12 +48,8 @@ jobs:
         - name: Check-out the code
           uses: actions/checkout@v4
 
-        # make gradlew executables first
-        - name: Make gradlew executable
-          run: chmod +x ./gradlew
-
         # Runs a single command using the runners shell
-        - name: Run Lint
+        - name: Run Unit test cases
           run: ./gradlew test
 
         # Runs a set of commands using the runners shell
@@ -65,5 +57,5 @@ jobs:
           uses: actions/upload-artifact@v4
           with:
             name: test-report.html
-            path: app/build/reports/tests/testDebugUnitTest/index.html
+            path: app/build/reports/tests/testDebugUnitTest/
   
