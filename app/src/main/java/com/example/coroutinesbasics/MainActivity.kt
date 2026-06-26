@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,33 +30,10 @@ class MainActivity : ComponentActivity() {
     fun BasicsAppLayoutContent(
         windowSize: WindowSizeClass? = null
     ) {
-        when (windowSize?.widthSizeClass) {
-            WindowWidthSizeClass.Expanded -> {
-                GreetingsAppLandscape()
-            }
-
-            else -> GreetingsAppPortrait()
-        }
-    }
-
-    @Composable
-    fun GreetingsAppLandscape(
-        modifier: Modifier = Modifier
-    ) {
         AppTheme {
-            Scaffold(modifier) { innerPadding ->
-                NavigationRoot(modifier = Modifier.padding(innerPadding))
-            }
-        }
-    }
-
-    @Composable
-    fun GreetingsAppPortrait(
-        modifier: Modifier = Modifier
-    ) {
-        AppTheme {
-            Scaffold(modifier) { innerPadding ->
-                NavigationRoot(modifier = Modifier.padding(innerPadding))
+            Scaffold { innerPadding ->
+                val modifier = Modifier.padding(innerPadding)
+                NavigationRoot(modifier = modifier)
             }
         }
     }
