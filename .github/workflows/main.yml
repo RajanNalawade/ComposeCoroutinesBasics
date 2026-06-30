@@ -119,10 +119,30 @@ jobs:
       - name: setup JDK 21
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'  # ✅ required field
+          distribution: 'temurin'  # specify the jdk disctribution required field
           java-version: 21
 
-      - name: SonarCloud Scan
-        run: ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+      - name: Cache Gradle dependencies
+        uses: actions/cachev4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hasFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build the Project
+        run: ./gradlew build --warning-mode all
+
+      - name: Run SonarQube Scan
+        run: ./gradlew sonarqube
         env:
+          SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: "RajanNalawade_ComposeCoroutinesBasics"
+          SONAR_ORGANIZATION: "RajanNalawade"
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+#      - name: SonarCloud Scan
+#        run: ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+#        env:
+#          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
