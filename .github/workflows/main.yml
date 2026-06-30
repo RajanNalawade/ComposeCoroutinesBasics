@@ -130,11 +130,11 @@ jobs:
 #          restore-keys: |
 #            ${{ runner.os }}-gradle-
 
-      - name: Build the Project
-        run: ./gradlew build --warning-mode all
+#      - name: Build the Project
+#        run: ./gradlew build --warning-mode all
 
       - name: Run SonarQube Scan
-        run: ./gradlew sonarqube
+        run: ./gradlew :sonarqube -Dsonar.token=${{ secrets.SONAR_TOKEN }}
         env:
           SONAR_HOST_URL: https://sonarcloud.io
           SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
