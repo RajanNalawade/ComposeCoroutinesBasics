@@ -6,3 +6,11 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.sonarqube)
 }
+
+sonar {
+    properties {
+        property("sonar.projectKey", "RajanNalawade_ComposeCoroutinesBasics")
+        property("sonar.organization", "RajanNalawade")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
+}

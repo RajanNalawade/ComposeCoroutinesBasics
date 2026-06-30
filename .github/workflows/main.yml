@@ -134,12 +134,8 @@ jobs:
 #        run: ./gradlew build --warning-mode all
 
       - name: Run SonarQube Scan
-        run: ./gradlew :sonarqube -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        run: ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
         env:
-          SONAR_HOST_URL: https://sonarcloud.io
-          SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: "RajanNalawade_ComposeCoroutinesBasics"
-          SONAR_ORGANIZATION: "RajanNalawade"
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 #      - name: SonarCloud Scan
