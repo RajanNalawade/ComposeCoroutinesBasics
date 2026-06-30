@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.sonarqube)
 }
 
 android {
@@ -15,9 +14,6 @@ android {
     defaultConfig {
         applicationId = "com.example.coroutinesbasics"
         minSdk = 26
-        targetSdk {
-            version = release(36)
-        }
         versionCode = 1
         versionName = "1.0"
 
@@ -33,7 +29,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isShrinkResources = true
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -41,8 +38,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
@@ -74,6 +71,7 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+    ksp(libs.kotlin.stdlib)
     implementation(libs.androidx.room.ktx)
 
     // Retrofit core networking library
