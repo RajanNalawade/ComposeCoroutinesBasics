@@ -95,6 +95,13 @@ dependencies {
     // Ensure this specific UI text Google Fonts dependency is present
     implementation(libs.androidx.compose.ui.text.google.fonts)
 
+    // compose navigation 3
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.viewmodel)
+    implementation(libs.androidx.navigation3.adaptive)
+    implementation(libs.koin.androidx.compose.navigation3)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.arch.core.testing)

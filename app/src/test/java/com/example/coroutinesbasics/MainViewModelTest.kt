@@ -3,6 +3,7 @@ package com.example.coroutinesbasics
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.coroutinesbasics.utils.MainCoroutineScopeRule
+import com.example.coroutinesbasics.viewmodels.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 
