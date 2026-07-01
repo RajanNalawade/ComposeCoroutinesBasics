@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 sealed interface MainUIEvents {
-    data class OnItemClicked(val itemId: Int) : MainUIEvents
     data class LoadNextPage(val page: Int) : MainUIEvents
 }
 
@@ -66,7 +65,6 @@ class MainViewModel(
     fun handleUserEvents(event: MainUIEvents) {
         when (event) {
             is MainUIEvents.LoadNextPage -> loadNexPopularMovie(event.page)
-            is MainUIEvents.OnItemClicked -> {}
         }
     }
 }
