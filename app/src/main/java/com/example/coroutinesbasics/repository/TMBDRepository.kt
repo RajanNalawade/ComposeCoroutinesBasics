@@ -1,10 +1,8 @@
 package com.example.coroutinesbasics.repository
 
-import com.example.coroutinesbasics.MainUIEvents
 import com.example.coroutinesbasics.db.MovieResponse
 import com.example.coroutinesbasics.db.TMBDMovieDao
 import com.example.coroutinesbasics.network.TmdbApi
-import kotlinx.coroutines.flow.map
 
 sealed interface MovieUIState {
     object Loading : MovieUIState

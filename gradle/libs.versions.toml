@@ -8,20 +8,24 @@ junit = "4.13.2"
 junitKtx = "1.3.0"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
-koinVersion = "3.5.6"
+koinVersion = "4.2.2"
+kotlinStdlib = "2.4.0"
 kotlinxSerializationJson = "1.11.0"
 lifecycle_version = "2.10.0"
 activityCompose = "1.13.0"
-kotlin = "2.4.0"
+kotlin = "2.3.0"
 kotlinCoroutines = "1.11.0"
 composeBom = "2026.02.01"
-kspVersion = "2.2.10-2.0.2"
+kspVersion = "2.3.9"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 retrofitVersion = "2.11.0"
 roomVersion = "2.8.4"
 runner = "1.7.0"
 uiTextGoogleFonts = "1.11.3"
 workVersion = "2.11.2"
+composeNavigation3 = "1.2.0-alpha04"
+lifecycleViewmodelNav3 = "1.0.0-alpha02"
+nav3Material = "1.0.0-SNAPSHOT"
 
 [libraries]
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
@@ -30,6 +34,14 @@ androidx-compose-ui-text-google-fonts = { module = "androidx.compose.ui:ui-text-
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTesting" }
 androidx-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "junitKtx" }
+
+#Core Navigation 3 libraries
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "composeNavigation3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "composeNavigation3" }
+#Optional add-on libraries for ViewModel integration and adaptive layouts
+androidx-navigation3-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
+androidx-navigation3-adaptive = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "nav3Material" }
+
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workVersion" }
 androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workVersion" }
@@ -55,15 +67,17 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinVersion" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlinStdlib" }
+koin-androidx-compose-navigation3 = { module = "io.insert-koin:koin-compose-navigation3", version.ref = "koinVersion" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinCoroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 androidx-room-runtime = { group = "androidx.room", name="room-runtime", version.ref = "roomVersion" }
 androidx-room-compiler = { group = "androidx.room", name="room-compiler", version.ref = "roomVersion" }
 androidx-room-ktx = { group = "androidx.room", name="room-ktx", version.ref = "roomVersion" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
-retrofit-convert-serialization = { module = "com.squareup.retrofit2:retrofit", name= "converter-kotlinx-serialization", version.ref = "kotlinxSerializationJson" }
-retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+retrofit-convert-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofitVersion" }
+retrofit2-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

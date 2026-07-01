@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.kotlin.serialization)
@@ -15,9 +14,6 @@ android {
     defaultConfig {
         applicationId = "com.example.coroutinesbasics"
         minSdk = 26
-        targetSdk {
-            version = release(36)
-        }
         versionCode = 1
         versionName = "1.0"
 
@@ -33,7 +29,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isShrinkResources = true
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -41,8 +38,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
@@ -74,6 +71,7 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+    ksp(libs.kotlin.stdlib)
     implementation(libs.androidx.room.ktx)
 
     // Retrofit core networking library
@@ -97,6 +95,13 @@ dependencies {
     // Ensure this specific UI text Google Fonts dependency is present
     implementation(libs.androidx.compose.ui.text.google.fonts)
 
+    // compose navigation 3
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.viewmodel)
+    implementation(libs.androidx.navigation3.adaptive)
+    implementation(libs.koin.androidx.compose.navigation3)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.arch.core.testing)
@@ -113,8 +118,3 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 }
 
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-    }
-}
