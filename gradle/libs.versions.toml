@@ -23,7 +23,7 @@ roomVersion = "2.8.4"
 runner = "1.7.0"
 uiTextGoogleFonts = "1.11.3"
 workVersion = "2.11.2"
-sonarQubeVersion = "4.4.1.3373"
+sonarQubeVersion = "7.2.0.6526"
 
 [libraries]
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
