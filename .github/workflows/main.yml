@@ -18,7 +18,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-     Steps represent a sequence of tasks they will be executed as part of the job
+    # Steps represent a sequence of tasks they will be executed as part of the job
     steps:
       # Check-out you repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check-out the code
@@ -46,7 +46,7 @@ jobs:
     # The type of runner that the job will run on
       runs-on: ubuntu-latest
 
-       Steps represent a sequence of tasks they will be executed as part of the job
+      # Steps represent a sequence of tasks they will be executed as part of the job
       steps:
         # Check-out you repository under $GITHUB_WORKSPACE, so your job can access it
         - name: Check-out the code
