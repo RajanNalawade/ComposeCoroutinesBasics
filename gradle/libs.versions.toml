@@ -23,7 +23,6 @@ roomVersion = "2.8.4"
 runner = "1.7.0"
 uiTextGoogleFonts = "1.11.3"
 workVersion = "2.11.2"
-sonarQubeVersion = "7.2.0.6526"
 
 [libraries]
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
@@ -74,5 +73,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref ="kspVersion" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-sonarqube = { id = "org.sonarqube", version.ref = "sonarQubeVersion" }
 
